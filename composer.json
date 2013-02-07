@@ -1,0 +1,15 @@
+{
+	"name": "voronenko/yiinano",
+	"description": "Custom build of the Yii Web Programming Framework suitable for my own projects. Please checkout yiisoft/yii for full version.",
+	"keywords": ["yii", "framework"],
+	"homepage": "http://www.yiiframework.com/",
+	"type": "library",
+	"license": "BSD-3-Clause",
+	"authors": [
+	],
+	"support": {
+	},
+	"require": {
+		"php": ">=5.1.0"
+	}
+}
