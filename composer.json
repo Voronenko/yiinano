@@ -1,6 +1,6 @@
 {
 	"name": "voronenko/yiinano",
-	"description": "Custom build of the Yii Web Programming Framework suitable for my own projects. Please checkout yiisoft/yii for full version.",
+	"description": "Replacing custom build of the Yii Web Programming Framework suitable for my own projects. Please checkout yiisoft/yii for full version.",
         "version":"0.0.1",
 	"keywords": ["yii", "framework"],
 	"homepage": "http://www.yiiframework.com/",
@@ -12,5 +12,6 @@
 	},
 	"require": {
 		"php": ">=5.1.0"
-	}
+	},
+       "target-dir": "yiisoft/yii"
 }
