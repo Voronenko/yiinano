@@ -9,49 +9,47 @@ class m130213_182320_inityiinano extends EDbMigration
             throw new exception ("This migration requires YIIConfig module from https://github.com/Voronenko/yii-config");
         }
 
-        echo 'congifuring yii-auth';
+        echo 'congifuring vendor.mishamx.yii-user';
         //
         $yiiauthconfig = array (
-            'aliases' =>
-            array (
-                'auth' => 'vendor.crisu83.yii-auth',
+    'aliases' => array(
+        'user' => 'vendor.mishamx.yii-user',
+    ),
+
+        'modules'=>array(
+            'user'=>array(
+                'class'=>'vendor.mishamx.yii-user.UserModule',
+                'hash' => 'md5',                                     # encrypting method (php hash function)
+                'sendActivationMail' => false,                        # send activation email
+                'loginNotActiv' => false,                            # allow access for non-activated users
+                'activeAfterRegister' => false,                      # activate user on registration (only sendActivationMail = false)
+                'autoLogin' => true,                                 # automatically login from registration
+                'registrationUrl' => array('/user/registration'),    # registration path
+                'recoveryUrl' => array('/user/recovery'),            # recovery password path
+                'loginUrl' => array('/user/login'),                  # login form path
+                'returnUrl' => array('/user/profile'),               # page after login
+                'returnLogoutUrl' => array('/user/login'),           # page after logout
             ),
-            'modules' =>
-            array (
-                'auth' => array(
-                    'class'=>'auth.AuthModule'
-                ),
-            ),
-            'components' =>
-            array (
-                'authManager' =>
-                array (
-                    'behaviors' =>
-                    array (
-                        'auth' =>
-                        array (
-                            'class' => 'auth.components.AuthBehavior',
-                            'admins' =>
-                            array (
-                                'admin',
-                                'foo',
-                                'bar',
-                            ),
-                        ),
-                    ),
-                ),
-                'user' =>
-                array (
-                    'class' => 'auth.components.AuthWebUser',
-                ),
-            ),
-        );
+        ),
 
 
-        $configModule->registerConfigUpdate($yiiauthconfig,'congifuring yii-auth');
+        'components'=>array(
+            'user'=>array(
+                // enable cookie-based authentication
+                'class' => 'WebUser',
+                'allowAutoLogin'=>true,
+                'loginUrl' => array('/user/login'),
+            ),
+        ),
+
+
+);
+
+
+        $configModule->registerConfigUpdate($yiiauthconfig,'congifuring vendor.mishamx.yii-user');
 
         $configModule->writeConfig();
-        echo 'done';
+        echo 'DONE';
 
 
     } 
