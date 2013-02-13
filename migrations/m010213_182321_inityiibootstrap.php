@@ -1,5 +1,5 @@
 <?php
-class m130213_182321_inityiibootstrap extends EDbMigration
+class m010213_182321_inityiibootstrap extends EDbMigration
 {
     public function up()
     {
