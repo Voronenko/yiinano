@@ -1,5 +1,5 @@
 <?php
-class m130213_182321_inityiibootstrap extends EDbMigration
+class m130213_182322_inityiirights extends EDbMigration
 {
     public function up()
     {
@@ -9,32 +9,27 @@ class m130213_182321_inityiibootstrap extends EDbMigration
             throw new exception ("This migration requires YIIConfig module from https://github.com/Voronenko/yii-config");
         }
 
-        echo 'congifuring yii-bootstrap';
+        echo 'congifuring yii-rights';
         //
         $yiiauthconfig = array(
-
             'import' => array(
-                'vendor.crisu83.yii-bootstrap.widgets.*',
+                'vendor.crisu83.yii-rights.components.*'
             ),
-
-            'components' => array(
-                'bootstrap' => array(
-                    'class' => 'bootstrap.components.Bootstrap',
-                ),
-            ),
-
             'modules' => array(
-                'gii' => array(
-                    'generatorPaths' => array(
-                        'bootstrap.gii',
-                    ),
-                ),
-            ),
+                'rights' => array(
+                    'class' => 'vendor.crisu83.yii-rights.RightsModule',
+                    'appLayout' => '//layouts/main',
+                    'userIdColumn' => 'id',
+                    'userClass' => 'User',
+                    'install' => true, // Enables the installer.
+                    'superuserName' => 'admin'
+                )
+            )
 
         );
 
 
-        $configModule->registerConfigUpdate($yiiauthconfig, 'congifuring yii-bootstrap');
+        $configModule->registerConfigUpdate($yiiauthconfig, 'congifuring yii-rights');
 
         $configModule->writeConfig();
         echo 'DONE';
@@ -45,7 +40,7 @@ class m130213_182321_inityiibootstrap extends EDbMigration
 
     public function down()
     {
-        echo "m130213_182321_inityiibootstrap does not support migration down.\n";
+        echo "m130213_182322_inityiirights does not support migration down.\n";
         return false;
 
         $this->execute("");
