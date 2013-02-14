@@ -24,7 +24,22 @@ class m010213_182322_inityiirights extends EDbMigration
                     'install' => true, // Enables the installer.
                     'superuserName' => 'admin'
                 )
-            )
+            ),
+
+            'components' => array(
+
+                'authManager' => array(
+                    'class' => 'RDbAuthManager', // Provides support authorization item sorting.
+                    'defaultRoles' => array('Authenticated', 'Guest'), // see correspoing business rules, note: superusers always get checkAcess == true
+                ),
+
+
+               'user' => 
+                    array (
+                        'class' => 'RWebUser', // mishamx/yii-rights: Allows super users access implicitly.
+                    )
+               )
+
 
         );
 
