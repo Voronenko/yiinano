@@ -1,5 +1,5 @@
 <?php
-class m130213_182322_inityiirights extends EDbMigration
+class m010213_182322_inityiirights extends EDbMigration
 {
     public function up()
     {
