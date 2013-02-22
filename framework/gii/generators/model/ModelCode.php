@@ -21,7 +21,8 @@ class ModelCode extends CCodeModel
 		return array_merge(parent::rules(), array(
 			array('tablePrefix, baseClass, tableName, modelClass, modelPath, connectionId', 'filter', 'filter'=>'trim'),
 			array('connectionId, tableName, modelPath, baseClass', 'required'),
-			array('tablePrefix, tableName, modelPath', 'match', 'pattern'=>'/^(\w+[\w\.]*|\*?|\w+\.\*)$/', 'message'=>'{attribute} should only contain word characters, dots, and an optional ending asterisk.'),
+			array('tablePrefix, tableName', 'match', 'pattern'=>'/^(\w+[\w\.]*|\*?|\w+\.\*)$/', 'message'=>'{attribute} should only contain word characters, dots, and an optional ending asterisk.'),
+			array('modelPath', 'match', 'pattern'=>'/^(\w+[\w\.\-]*|\*?|\w+\.\-\*)$/', 'message'=>'{attribute} should only contain word characters, dots, dash, and an optional ending asterisk.'),
 			array('connectionId', 'validateConnectionId', 'skipOnError'=>true),
 			array('tableName', 'validateTableName', 'skipOnError'=>true),
 			array('tablePrefix, modelClass, baseClass', 'match', 'pattern'=>'/^[a-zA-Z_]\w*$/', 'message'=>'{attribute} should only contain word characters.'),
